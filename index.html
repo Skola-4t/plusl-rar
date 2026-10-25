@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LÄRARplus</title>
+<link rel="icon" type="image/png" href="plus-icon.png">
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f5f8;color:#172033}
+#loginPage{min-height:100vh;display:flex;justify-content:center;align-items:center;background:linear-gradient(135deg,#182848,#4b6cb7)}
+.loginBox{width:380px;background:white;padding:40px;border-radius:18px;box-shadow:0 15px 40px rgba(0,0,0,.2);text-align:center}
+.logo{font-size:38px;font-weight:bold;margin-bottom:5px}.logo span{color:#4b6cb7}
+.loginBox h2{margin:5px 0 30px}
+.loginBox input{width:100%;padding:13px;margin:8px 0;border:1px solid #ddd;border-radius:8px;font-size:16px}
+button{border:0;cursor:pointer;border-radius:8px;padding:12px 18px;font-size:15px}
+.loginButton{width:100%;margin-top:15px;background:#4b6cb7;color:white}.loginButton:hover{background:#38589c}
+.error{color:#d32f2f;margin-top:12px}
+#app{display:none}
+header{height:70px;background:#182848;color:white;display:flex;align-items:center;justify-content:space-between;padding:0 30px}
+.headerLogo{font-size:25px;font-weight:bold}.headerLogo span{color:#7ea2ff}
+.logout{background:rgba(255,255,255,.15);color:white}
+.container{max-width:1100px;margin:35px auto;padding:0 20px}
+.welcome{background:white;padding:25px;border-radius:15px;margin-bottom:25px}
+.welcome h1{margin-top:0}
+.sectionTitle{margin-top:35px}
+.materials{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.material{background:white;padding:25px;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,.06);cursor:pointer;transition:.2s;text-decoration:none;color:#172033}
+.material:hover{transform:translateY(-4px);box-shadow:0 10px 25px rgba(0,0,0,.1)}
+.materialIcon{font-size:40px}.material h3{margin-bottom:5px}.material p{color:#6b7280}
+.profile{background:white;padding:25px;border-radius:15px;margin-top:25px}
+.profile input{padding:10px;margin:5px 0 15px;width:100%;max-width:400px;border:1px solid #ddd;border-radius:7px}
+.save{background:#4b6cb7;color:white}
+</style>
+</head>
+
+<body>
+
+<div id="loginPage">
+  <div class="loginBox">
+    <div class="logo">PLUS<span>+</span></div>
+    <h2>LÄRARplus</h2>
+
+    <input type="text" id="username" placeholder="Användarnamn" autocomplete="username">
+    <input type="password" id="password" placeholder="Lösenord" autocomplete="current-password">
+
+    <button class="loginButton" onclick="login()">Logga in</button>
+    <div id="error" class="error"></div>
+  </div>
+</div>
+
+<div id="app">
+<header>
+  <div class="headerLogo">PLUS<span>+</span> LÄRARplus</div>
+  <button class="logout" onclick="logout()">Logga ut</button>
+</header>
+
+<div class="container">
+  <div class="welcome">
+    <h1>Välkommen, <span id="teacherName">Lärare</span>!</h1>
+    <p>Här hittar du dina undervisningsmaterial.</p>
+  </div>
+
+  <h2 class="sectionTitle">📚 Material</h2>
+
+<div class="materials">
+
+  <a href="material.html" target="_blank" class="material">
+    <div class="materialIcon">📘</div>
+    <h3>Lokes hemlighet</h3>
+    <p>Kursmaterial för So</p>
+  </a>
+
+  <a href="material2.html" target="_blank" class="material">
+    <div class="materialIcon">📕</div>
+    <h3>Hälsa</h3>
+    <p>Arbete om hälsa</p>
+  </a>
+
+</div>  <div class="profile">
+    <h2>👤 Min profil</h2>
+    <label>Namn</label><br>
+    <input id="profileName" type="text" value="Lärare">
+    <br>
+    <button class="save" onclick="saveProfile()">Spara profil</button>
+  </div>
+</div>
+</div>
+
+<script>
+/*
+  LÄRAR-KONTON
+  Lägg till fler personer här.
+*/
+const accounts = {
+  "siggesjöö": {
+    password: "2017",
+    name: "Sigge"
+  }
+};
+
+function login() {
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value;
+  const error = document.getElementById("error");
+
+  if (accounts[username] && accounts[username].password === password) {
+    localStorage.setItem("loggedIn", "true");
+    localStorage.setItem("loggedInUser", username);
+
+    const name = localStorage.getItem("teacherName_" + username)
+      || accounts[username].name;
+
+    localStorage.setItem("teacherName_" + username, name);
+
+    showApp();
+  } else {
+    error.innerText = "Fel användarnamn eller lösenord.";
+  }
+}
+
+function showApp() {
+  const username = localStorage.getItem("loggedInUser");
+
+  if (!username || !accounts[username]) {
+    logout();
+    return;
+  }
+
+  const savedName =
+    localStorage.getItem("teacherName_" + username)
+    || accounts[username].name;
+
+  document.getElementById("teacherName").innerText = savedName;
+  document.getElementById("profileName").value = savedName;
+
+  document.getElementById("loginPage").style.display = "none";
+  document.getElementById("app").style.display = "block";
+}
+
+function logout() {
+  localStorage.removeItem("loggedIn");
+  localStorage.removeItem("loggedInUser");
+
+  document.getElementById("app").style.display = "none";
+  document.getElementById("loginPage").style.display = "flex";
+
+  document.getElementById("username").value = "";
+  document.getElementById("password").value = "";
+  document.getElementById("error").innerText = "";
+}
+
+function saveProfile() {
+  const username = localStorage.getItem("loggedInUser");
+  const name = document.getElementById("profileName").value.trim();
+
+  if (!username || !accounts[username] || !name) return;
+
+  localStorage.setItem("teacherName_" + username, name);
+  document.getElementById("teacherName").innerText = name;
+}
+
+document.getElementById("password").addEventListener("keydown", function(event) {
+  if (event.key === "Enter") login();
+});
+
+if (localStorage.getItem("loggedIn") === "true") {
+  showApp();
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lokes hemlighet</title>
+  <link rel="icon" type="image/png" href="plus-icon personal.png">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      color: #172033;
+    }
+
+    header {
+      background: #101c35;
+      color: white;
+      padding: 18px 30px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 35px auto;
+      padding: 0 20px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 25px;
+      color: #245b9e;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .back:hover {
+      text-decoration: underline;
+    }
+
+    .heading {
+      background: white;
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 32px;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: #687386;
+      font-size: 17px;
+    }
+
+    .boxes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .box {
+      display: block;
+      background: white;
+      border-radius: 16px;
+      padding: 32px 25px;
+      min-height: 220px;
+      text-decoration: none;
+      color: #172033;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.13);
+    }
+
+    .icon {
+      font-size: 48px;
+      margin-bottom: 18px;
+    }
+
+    .box h2 {
+      margin: 0 0 10px;
+      font-size: 25px;
+    }
+
+    .box p {
+      margin: 0;
+      color: #687386;
+      line-height: 1.5;
+    }
+
+    .open {
+      display: inline-block;
+      margin-top: 22px;
+      color: #245b9e;
+      font-weight: bold;
+    }
+
+    @media (max-width: 750px) {
+      .boxes {
+        grid-template-columns: 1fr;
+      }
+
+      .box {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    PLUS | LÄRARplus
+  </header>
+
+  <main class="container">
+
+    <a class="back" href="index.html">← Tillbaka</a>
+
+    <section class="heading">
+      <h1>Lokes hemlighet</h1>
+      <p class="subtitle">Kursmaterial</p>
+    </section>
+
+    <section class="boxes">
+
+      <a class="box" href="Nordisk%20mytologi.pdf" target="_blank" rel="noopener noreferrer">
+        <div class="icon">📕</div>
+        <h2>Boken</h2>
+        <p>Öppna boken som PDF.</p>
+        <span class="open">Öppna boken →</span>
+      </a>
+
+      <a class="box" href="presentationer.html">
+        <div class="icon">📊</div>
+        <h2>Presentationer</h2>
+        <p>Presentationer och bildspel för undervisningen.</p>
+        <span class="open">Visa presentationer →</span>
+      </a>
+
+      <a class="box" href="annat.html">
+        <div class="icon">📁</div>
+        <h2>Annat</h2>
+        <p>Övrigt material till kursen.</p>
+        <span class="open">Visa material →</span>
+      </a>
+
+    </section>
+
+  </main>
+
+</body>
+</html>

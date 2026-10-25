@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentationer – LÄRARplus</title>
+  <link rel="icon" type="image/png" href="plus-icon personal.png">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      color: #172033;
+    }
+    header {
+      background: #101c35;
+      color: white;
+      padding: 18px 30px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 35px auto;
+      padding: 0 20px;
+    }
+    .back {
+      display: inline-block;
+      margin-bottom: 25px;
+      color: #245b9e;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .heading, .presentation {
+      background: white;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+    .heading { margin-bottom: 25px; }
+    h1 { margin: 0 0 8px; font-size: 32px; }
+    .subtitle { margin: 0; color: #687386; font-size: 17px; }
+    .presentation {
+      display: block;
+      text-decoration: none;
+      color: #172033;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .presentation:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 7px 20px rgba(0,0,0,0.13);
+    }
+    .icon { font-size: 42px; margin-bottom: 15px; }
+    .presentation h2 { margin: 0 0 8px; font-size: 24px; }
+    .presentation p { margin: 0; color: #687386; font-size: 16px; }
+    .open {
+      display: inline-block;
+      margin-top: 20px;
+      color: #245b9e;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>PLUS | LÄRARplus</header>
+  <main class="container">
+    <a class="back" href="material.html">← Tillbaka</a>
+    <section class="heading">
+      <h1>Presentationer</h1>
+      <p class="subtitle">Presentationer och bildspel för undervisningen</p>
+    </section>
+
+    <a class="presentation" href="Nordisk mytologi tavla.pdf" target="_blank" rel="noopener noreferrer">
+      <div class="icon">📊</div>
+      <h2>Nordisk mytologi</h2>
+      <p>Presentation om nordisk mytologi</p>
+      <span class="open">Öppna presentationen →</span>
+    </a>
+  </main>
+</body>
+</html>
